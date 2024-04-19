@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!--xacro:include filename="gebot_core.xacro" /-->
+
+    <link name="chassis1">
+        <visual>
+            <geometry>
+                <box size="0.9 0.9 0.3"/>
+            </geometry>
+            <material name="myblue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.9 0.9 0.3"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="10" w="0.8" d="0.9" h="0.3"/>
+    </link>
+
+    <link name="chassis2">
+        <visual>
+            <geometry>
+                <box size="0.5 0.9 0.35"/>
+            </geometry>
+            <material name="myblue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.5 0.9 0.35"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="3" w="0.5" d="0.9" h="0.35"/>
+    </link>
+
+    <link name="chassis3">
+        <visual>
+            <geometry>
+                <box size="0.15 0.6 0.2"/>
+            </geometry>
+            <material name="myblue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.15 0.6 0.2"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertia m="1" w="0.6" d="0.15" h="0.2"/>
+    </link>
+
+    <joint name="base_to_chassis1" type="fixed">
+        <parent link="base_chassis"/>
+        <child link="chassis1"/>
+        <origin xyz="-0.25 0.0 0.225"/>
+    </joint>
+
+    <joint name="chassis1_to_chassis2" type="fixed">
+        <!--axis xyz="0 1 0"/-->
+        <!--limit effort="1000.0" lower="-0.4" upper="0.4" velocity="0.5"/-->
+        <parent link="chassis1"/>
+        <child link="chassis2"/>
+        <origin xyz="-0.2 0.0 0.325"/>
+    </joint>
+
+    <joint name="base_to_chassis3" type="fixed">
+        <parent link="base_chassis"/>
+        <child link="chassis3"/>
+        <origin xyz="0.6 0.0 0.125"/>
+    </joint>
+
+</robot>

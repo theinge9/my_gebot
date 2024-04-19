@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="base_chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="base_chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- Wheels -->
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Grey</material>
+        <!--mu1 value="0.001"/-->
+        <!--mu2 value="0.001"/-->
+    </gazebo>
+
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Grey</material>
+        <!--mu1 value="0.001"/-->
+        <!--mu2 value="0.001"/-->
+    </gazebo>
+
+    <gazebo reference="front_wheel">
+        <material>Gazebo/Grey</material>
+        <!--mu1 value="0.01"/-->
+        <!--mu2 value="0.01"/-->
+    </gazebo>
+
+    <!-- Steering -->
+    <gazebo reference="steering_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="connection">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+
+    <gazebo reference="steering_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- Body -->
+    <gazebo reference="chassis1">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="chassis2">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="chassis3">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <!-- Lidar -->
+    <gazebo reference="laser_frame">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+</robot>
