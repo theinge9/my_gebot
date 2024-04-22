@@ -1,0 +1,26 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/aye/lidar_ws/install/hesai_ros_driver/local/lib/python3.10/dist-packages",
+        "/home/aye/rosbot_ws/install/rosbot_utils/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/rosbot_gazebo/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/rosbot_bringup/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/rosbot_controller/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages",
+        "/home/aye/ros2_ws/build/urdf_tutorial_r2d2",
+        "/home/aye/ros2_ws/install/urdf_tutorial_r2d2/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/aye/lidar_ws/install/hesai_ros_driver/local/lib/python3.10/dist-packages",
+        "/home/aye/rosbot_ws/install/rosbot_utils/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/rosbot_gazebo/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/rosbot_bringup/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/rosbot_controller/lib/python3.10/site-packages",
+        "/home/aye/rosbot_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages",
+        "/home/aye/ros2_ws/build/urdf_tutorial_r2d2",
+        "/home/aye/ros2_ws/install/urdf_tutorial_r2d2/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

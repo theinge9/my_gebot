@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/aye/lidar_ws/install/hesai_ros_driver/include/**",
+        "/home/aye/rosbot_ws/install/rosbot_hardware_interfaces/include/**",
+        "/home/aye/rosbot_ws/install/micro_ros_agent/include/**",
+        "/home/aye/rosbot_ws/install/micro_ros_msgs/include/**",
+        "/home/aye/rosbot_ws/install/mecanum_drive_controller/include/**",
+        "/home/aye/rosbot_ws/install/imu_sensor_broadcaster/include/**",
+        "/home/aye/rosbot_ws/install/diff_drive_controller/include/**",
+        "/opt/ros/humble/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
