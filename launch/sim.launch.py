@@ -43,6 +43,12 @@ def generate_launch_description():
         executable='spawner',
         arguments=['tricycle_controller'],
     )
+    
+    joint_state_broadcaster = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['joint_state_broadcaster'],
+    )
     """
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -53,5 +59,5 @@ def generate_launch_description():
         spawn_entity,
         rviz_node,
         #control_drive_spawner,
-        #gzserver, gzclient
+        #joint_state_broadcaster
     ])
