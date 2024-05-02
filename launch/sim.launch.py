@@ -37,7 +37,7 @@ def generate_launch_description():
         output='screen',
         arguments=['-d', LaunchConfiguration('rvizconfig')],
     )
-    """
+    
     control_drive_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -49,7 +49,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['joint_state_broadcaster'],
     )
-    """
+    
     return LaunchDescription([
         DeclareLaunchArgument(
             name='rvizconfig', default_value=rviz_config_path, 
@@ -57,7 +57,7 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        rviz_node,
-        #control_drive_spawner,
-        #joint_state_broadcaster
+        #rviz_node,
+        control_drive_spawner,
+        joint_state_broadcaster
     ])

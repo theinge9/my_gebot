@@ -50,7 +50,17 @@
 
     <!-- Robot Base -->
     <link name="base_link"/>
+ 
+    <!-- Base_footprint -->
+    <!-- <link name="base_footprint_joint"/>
 
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint> -->
+
+    <!-- Chassis -->
     <link name="base_chassis">
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>

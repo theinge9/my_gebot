@@ -5,7 +5,7 @@
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
         </hardware>
-        <joint name="front_steering_joint">
+        <joint name="front_wheel_joint">
             <command_interface name="position"/>
             <state_interface name="position" />
         </joint>

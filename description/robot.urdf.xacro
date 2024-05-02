@@ -11,7 +11,7 @@
     <!-- Control -->
     <!-- <xacro:include filename="gazebo_control.xacro" /> -->
     <!-- <xacro:include filename="ros2_control.xacro" /> -->
-    <!-- <xacro:include filename="tricycle_control.xacro" /> -->
+    <xacro:include filename="tricycle_control.xacro" />
     <!-- <xacro:include filename="tricycle_steering_control.xacro" /> -->
     
 </robot>
