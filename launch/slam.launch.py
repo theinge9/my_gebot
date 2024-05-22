@@ -40,12 +40,12 @@ def generate_launch_description():
     )
 
     rviz2_node = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        output="screen",
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
         condition=IfCondition(use_rviz),
-        arguments=["-d", rviz_config_path],
+        arguments=['-d', rviz_config_path],
     )
 
     return LaunchDescription([
