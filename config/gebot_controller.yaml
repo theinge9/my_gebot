@@ -6,6 +6,9 @@ controller_manager:
     tricycle_controller:
       type: tricycle_controller/TricycleController
 
+    tricycle_steering_controller:
+      type: tricycle_steering_controller/TricycleSteeringController
+    
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -17,9 +20,9 @@ tricycle_controller:
   ros__parameters:
     # Model
     traction_joint_name: front_wheel_joint # Name of traction joint in URDF
-    steering_joint_name: bearing_joint  # front_steering_joint # Name of steering joint in URDF
-    wheel_radius: 0.125 #0.15#0.1 # Radius of front wheel
-    wheelbase: 0.975 #1.25 # Distance between center of back wheels and front wheel
+    steering_joint_name: front_steering_joint # Name of steering joint in URDF
+    wheel_radius: 0.15 #0.1 # Radius of front wheel
+    wheelbase: 1.25 # Distance between center of back wheels and front wheel
 
     # Odometry
     odom_frame_id: odom
@@ -37,9 +40,9 @@ tricycle_controller:
       # min_velocity: 0.0
       # max_velocity: 1000.0
       # min_acceleration: 0.0
-      max_acceleration: 3.0
+      max_acceleration: 5.0
       # min_deceleration: 0.0
-      max_deceleration: 3.0 #8.0
+      max_deceleration: 5.0 #8.0
       # min_jerk: 0.0
       # max_jerk: 1000.0
     steering:
@@ -56,3 +59,21 @@ tricycle_controller:
 
     # Debug
     publish_ackermann_command: true # Publishes AckermannDrive. The speed does not comply to the msg definition, it the wheel angular speed in rad/s.
+
+tricycle_steering_controller:
+  ros__parameters:
+    reference_timeout: 2.0
+    front_steering: true 
+    open_loop: true 
+    velocity_rolling_window_size: 10
+    position_feedback: true
+    use_stamped_vel: true
+    rear_wheels_names: [right_wheel_joint, left_wheel_joint]
+    front_wheels_names: [front_wheel_joint]  #front_steering_joint
+
+    wheelbase: 1.25
+    wheel_track: 0.7
+    front_wheels_radius: 0.15
+    rear_wheels_radius: 0.15
+
+    base_frame_id: base_link

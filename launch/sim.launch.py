@@ -57,7 +57,7 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        #rviz_node,
+        rviz_node,
         control_drive_spawner,
         joint_state_broadcaster
     ])

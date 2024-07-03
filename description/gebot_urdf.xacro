@@ -52,13 +52,13 @@
     <link name="base_link"/>
  
     <!-- Base_footprint -->
-    <!-- <link name="base_footprint_joint"/>
+    <!--<link name="base_footprint_joint"/>
 
     <joint name="base_footprint_joint" type="fixed">
         <parent link="base_link"/>
         <child link="base_footprint"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-    </joint> -->
+    </joint>-->
 
     <!-- Chassis -->
     <link name="base_chassis">
@@ -76,7 +76,7 @@
             <material name="base"/>
         </visual>
 
-        <xacro:box_inertia m="3" w="${base_width}" d="${base_length}" h="${base_height}"/>
+        <xacro:box_inertia m="1" w="${base_width}" d="${base_length}" h="${base_height}"/><!--3-->
     </link>
 
     <joint name="base_link_joint" type="fixed">
@@ -132,14 +132,15 @@
                 <cylinder radius="${wheel_radius}" length="${(wheel_width+0.02)}"/>
             </geometry>
         </collision>
-        <xacro:cylinder_inertia m="5" r="${wheel_radius}" h="${(wheel_width+0.02)}"/>
+        <xacro:cylinder_inertia m="1" r="${wheel_radius}" h="${(wheel_width+0.02)}"/><!--5-->
     </link>
 
     <!--<joint name="front_wheel_joint" type="continuous">
-        <axis xyz="0 1 0"/>
-        <parent link="base_link"/>
+        <axis xyz="0 0 1"/>
+        <parent link="base_chassis"/>
         <child link="front_wheel"/>
-        <origin xyz="0.5 0.0 -0.125"/>
+        <origin xyz="0.475 0.0 -0.145" rpy="${-pi/2} 0 0"/>
+        <dynamics damping="0.2" />
     </joint>-->
 
     <!-- Steering Links and Joints-->
@@ -151,26 +152,30 @@
             </geometry>
             <material name="white"/>
         </visual>
-
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <cylinder radius="0.02"  length="0.93"/>
             </geometry>
         </collision>
-
-        <xacro:cylinder_inertia m="0.01" r="0.02" h="0.93"/>
+        <xacro:cylinder_inertia m="1" r="0.02" h="0.93"/><!--0.01-->
     </link>
 
-    <joint name="front_steering_joint" type="revolute">
+    <!--<joint name="front_steering_joint" type="revolute">
         <axis xyz="0 0 1"/>
         <limit effort="1000.0" lower="-1.4" upper="1.4" velocity="0.5"/>
         <parent link="base_chassis"/>
         <child link="steering_link"/>
-        <origin xyz="0.66 0.0 0.4"/>
+        <origin xyz="0.65 0.0 0.4"/>
+    </joint>-->
+
+    <joint name="front_steering_joint" type="fixed">
+        <parent link="base_chassis"/>
+        <child link="steering_link"/>
+        <origin xyz="0.65 0.0 0.4"/>
     </joint>
 
-    <link name="chain_frame">
+    <!--<link name="chain_frame">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 ${pi/2} 0.0"/>
             <geometry>
@@ -178,14 +183,12 @@
             </geometry>
             <material name="myblue"/>
         </visual>
-
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 ${pi/2} 0.0"/>
             <geometry>
                 <cylinder radius="0.01" length="0.2"/>
             </geometry>
         </collision>
-
         <xacro:cylinder_inertia m="0.001" r="0.01" h="0.2"/>
     </link>
 
@@ -193,32 +196,7 @@
         <parent link="steering_link"/>
         <child link="chain_frame"/>
         <origin xyz="-0.1 0.0 -0.465"/>
-    </joint>
-
-    <!--link name="connection">
-        <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0"/>
-            <geometry>
-                <cylinder radius="0.01" length="0.05"/>
-            </geometry>
-            <material name="myblue"/>
-        </visual>
-
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0"/>
-            <geometry>
-                <cylinder radius="0.01" length="0.05"/>
-            </geometry>
-        </collision>
-
-        <xacro:cylinder_inertia m="0.001" r="0.01" h="0.05"/>
-    </link>
-
-    <joint name="steering_connector"  type="fixed">
-        <parent link="chain_frame"/>
-        <child link="connection"/>
-        <origin xyz="-0.2 0.0 0.0"/>
-    </joint-->
+    </joint>-->
 
     <link name="steering_wheel">
         <visual>
@@ -228,15 +206,13 @@
             </geometry>
             <material name="black"/>
         </visual>
-        
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0"/>
             <geometry>
                 <cylinder radius="0.02" length="0.3"/>
             </geometry>
         </collision>
-
-        <xacro:cylinder_inertia m="0.005" r="0.02" h="0.3"/>
+        <xacro:cylinder_inertia m="1" r="0.02" h="0.3"/><!--0.005-->
     </link>
 
     <joint name="steering_wheel_connector" type="fixed">
@@ -245,12 +221,70 @@
         <origin xyz="0.0 0.0 0.465"/>
     </joint>
 
+    <link name="bearing">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.045" length="0.04"/><!--0.04-->
+            </geometry>
+            <material name="myblue"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.045" length="0.04"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia m="1" r="0.0045" h="0.04"/><!--0.001-->
+    </link>
+
+    <joint name="bearing_joint"  type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit effort="1000.0" lower="-1.4" upper="1.4" velocity="0.5"/>
+        <parent link="base_chassis"/>
+        <child link="bearing"/>
+        <origin xyz="0.475 0.0 0.045"/><!--0.045-->
+    </joint>
+
+    <link name="bearing_gear">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.195"/>
+            </geometry>
+            <material name="myblue"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.02" length="0.195"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertia m="1" r="0.02" h="0.195"/><!--0.001-->
+    </link>
+
+    <joint name="drive_unit" type="fixed">
+        <parent link="bearing"/>
+        <child link="bearing_gear"/>
+        <origin xyz="0.0 0.0 -0.0975"/>
+    </joint>
+
     <joint name="front_wheel_joint" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="bearing_gear"/>
+        <child link="front_wheel"/>
+        <origin xyz="0.0 0.0 -0.0975" rpy="${-pi/2} 0.0 0.0"/>
+        <!--<origin xyz="0.0 0.0 -0.195" rpy="${-pi/2} 0.0 0.0"/--><!---0.195, -0.115-->
+        <!--<origin xyz="0.475 0.0 -0.15" rpy="${-pi/2} 0.0 0.0"/-->
+        <dynamics damping="0.2" />
+    </joint>
+
+    <!--<joint name="front_wheel_joint" type="continuous">
         <axis xyz="0 0 1" />
         <parent link="chain_frame"/>
         <child link="front_wheel"/>
         <origin xyz="-0.1 0.0 -0.085" rpy="${-pi/2} ${pi/2} 0"/>
         <dynamics damping="0.2" />
-    </joint>
+    </joint>-->
     
 </robot>

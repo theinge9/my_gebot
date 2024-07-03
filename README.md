@@ -12,7 +12,7 @@ ros2 launch my_gebot sim.launch.py
 Controller Load : 
 ```
 ros2 run controller_manager spawner tricycle_controller               
-ros2 run controller_manager joint_state_broadcaster
+ros2 run controller_manager spawner joint_state_broadcaster
 ```                
 Teleop : 
 ```
