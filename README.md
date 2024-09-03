@@ -22,3 +22,4 @@ Slam :
 ```
 ros2 launch my_gebot slam.launch.py
 ```
+Velodyne : Need to install velodyne_simulator.git

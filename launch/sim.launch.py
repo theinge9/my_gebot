@@ -30,7 +30,7 @@ def generate_launch_description():
                         output='screen'
     )
 
-    rviz_node = Node(
+    rviz2_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
@@ -57,7 +57,7 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        rviz_node,
+        rviz2_node,
         control_drive_spawner,
         joint_state_broadcaster
     ])
